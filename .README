@@ -1,0 +1,16 @@
+To run this api you will first have to create a .env file with this properties:
+
+# Driven adapters values
+
+# MySql values
+
+db_user=Fooser
+db_passwd=Barssword
+db_addr=Foodress
+db_db=dbar
+
+# Driver adapters values
+
+# Mux values
+
+MuxPort=3000
