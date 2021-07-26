@@ -10,7 +10,7 @@ import (
 	"github.com/AlejandroWaiz/novels-box/internal/domain/structs"
 )
 
-func (ma *MuxAdapter) AddNovelByName(w http.ResponseWriter, r *http.Request) {
+func (ma *MuxAdapter) AddNovelByTitle(w http.ResponseWriter, r *http.Request) {
 
 	reqBody, err := ioutil.ReadAll(r.Body)
 

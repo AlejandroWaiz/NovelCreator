@@ -2,7 +2,7 @@ package mysqladapter
 
 import "github.com/AlejandroWaiz/novels-box/internal/domain/structs"
 
-func (db *MySqlAdapter) CreateNovelInDB(novels structs.Novel) error {
+func (db *MySqlAdapter) CreateNovelInDB(novel structs.Novel) error {
 
 	q := "INSERT INTO `allnovels` (ID, Title, Author, Genres) VALUES (?,?,?,?)"
 
@@ -16,7 +16,7 @@ func (db *MySqlAdapter) CreateNovelInDB(novels structs.Novel) error {
 
 	}
 
-	_, err = insert.Exec(novels.ID, novels.Title, novels.Author, novels.Genres)
+	_, err = insert.Exec(novel.ID, novel.Title, novel.Author, novel.Genres)
 
 	if err != nil {
 

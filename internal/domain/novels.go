@@ -13,9 +13,9 @@ func CreateNewNovelsDomain(database outadapters.OutPort) *NovelsDomain {
 	return &NovelsDomain{Database: database}
 }
 
-func (nc *NovelsDomain) Add(novels structs.Novel) error {
+func (nd *NovelsDomain) Add(novels structs.Novel) error {
 
-	err := nc.Database.CreateNovelInDB(novels)
+	err := nd.Database.CreateNovelInDB(novels)
 
 	if err != nil {
 
@@ -27,9 +27,9 @@ func (nc *NovelsDomain) Add(novels structs.Novel) error {
 
 }
 
-func (nc *NovelsDomain) DeleteByName(name string) error {
+func (nd *NovelsDomain) DeleteByTitle(title string) error {
 
-	err := nc.Database.RemoveNovelByNameInDB(name)
+	err := nd.Database.RemoveNovelByTitleInDB(title)
 
 	if err != nil {
 
@@ -40,9 +40,25 @@ func (nc *NovelsDomain) DeleteByName(name string) error {
 	return nil
 }
 
-func (nc *NovelsDomain) GetByName(name string) ([]structs.Novel, error) {
+func (nd *NovelsDomain) GetByTitle(title string) (structs.Novel, error) {
 
-	novels, err := nc.Database.GetNovelByNameInDB(name)
+	novel, err := nd.Database.GetNovelByTitleInDB(title)
+
+	if err != nil {
+
+		var empty structs.Novel
+
+		return empty, err
+
+	}
+
+	return novel, nil
+
+}
+
+func (nd *NovelsDomain) GetAllNovels() ([]structs.Novel, error) {
+
+	novels, err := nd.Database.GetAllNovelsInDB()
 
 	if err != nil {
 
@@ -50,6 +66,6 @@ func (nc *NovelsDomain) GetByName(name string) ([]structs.Novel, error) {
 
 	}
 
-	return novels, nil
+	return novels, err
 
 }

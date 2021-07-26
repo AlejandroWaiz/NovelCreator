@@ -6,6 +6,7 @@ import (
 
 type OutPort interface {
 	CreateNovelInDB(structs.Novel) error
-	RemoveNovelByNameInDB(name string) error
-	GetNovelByNameInDB(name string) ([]structs.Novel, error)
+	RemoveNovelByTitleInDB(title string) error
+	GetNovelByTitleInDB(title string) (structs.Novel, error)
+	GetAllNovelsInDB() ([]structs.Novel, error)
 }
